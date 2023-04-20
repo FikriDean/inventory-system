@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('gender');
             $table->foreignId('role_id');
+            $table->string('image')->default('user/photo_profiles/default_user_logo.png');
             $table->rememberToken();
             $table->timestamps();
         });
