@@ -21,8 +21,8 @@ return new class extends Migration
             $table->foreign('account_method_id')
                 ->references('id')
                 ->on('accounts_methods')->onDelete('cascade');
-            $table->string('buyer_name');
-            $table->string('buyer_number');
+            $table->string('transaction_name');
+            $table->string('transaction_number');
             $table->foreignId('total_id');
             $table->foreign('total_id')
                 ->references('id')

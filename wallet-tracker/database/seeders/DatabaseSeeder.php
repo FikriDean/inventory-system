@@ -178,10 +178,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Transaction::factory()->create([
             'transaction_type_id' => 1,
             'account_method_id' => 1,
-            'buyer_name' => 'Safira Putri',
-            'buyer_number' => '62728288181',
+            'transaction_name' => 'Safira Putri',
+            'transaction_number' => '62728288181',
             'total_id' => 1,
             'status' => 1
+        ]);
+
+        \App\Models\Invitation::factory()->create([
+            'warehouse_id' => 1,
+            'email' => 'safira@gmail.com',
+            'status' => 'accepted'
         ]);
     }
 }

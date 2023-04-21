@@ -42,4 +42,9 @@ class Warehouse extends Model
     {
         return $this->hasMany(TransactionType::class);
     }
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
 }
