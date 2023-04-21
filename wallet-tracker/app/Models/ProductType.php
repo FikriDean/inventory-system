@@ -12,4 +12,14 @@ class ProductType extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 }

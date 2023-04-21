@@ -17,4 +17,9 @@ class TransactionType extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 }

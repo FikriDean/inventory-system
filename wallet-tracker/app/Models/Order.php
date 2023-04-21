@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->hasOne(Total::class);
     }
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 }

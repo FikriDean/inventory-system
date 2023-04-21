@@ -30,4 +30,9 @@ class Account extends Model
             'number' => $number
         ]);
     }
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 }

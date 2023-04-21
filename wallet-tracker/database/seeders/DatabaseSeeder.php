@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -21,58 +22,74 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        \App\Models\Warehouse::factory(10)->create();
+
+        // \App\Models\Warehouse::factory()->create([
+        //     'code' => 'AWDKJ98AW8D8AWD88'
+        // ]);
+
         \App\Models\User::factory()->create([
             'name' => 'Fikri Dean Radityo',
+            'username' => 'fikridean',
             'email' => 'deanradityo@gmail.com',
             'email_verified_at' => '02/11/2022',
             'password' => Hash::make('password'),
-            'phone_number' => '081387000325',
-            'gender' => 'Man',
+            'phone_number' => '6281387000325',
+            'gender' => 'Male',
             'role_id' => 1
         ]);
 
+        \App\Models\User::factory()->create([
+            'name' => 'Safira Putri',
+            'username' => 'safiraa',
+            'email' => 'safira@gmail.com',
+            'email_verified_at' => '02/12/2022',
+            'password' => Hash::make('password'),
+            'phone_number' => '62545234234',
+            'gender' => 'Female',
+            'role_id' => 2
+        ]);
+
         \App\Models\Role::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Direktur Utama',
             'salary' => 76400000
         ]);
 
         \App\Models\Role::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Manager',
             'salary' => 44000000
         ]);
 
         \App\Models\Role::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Cashier',
             'salary' => 4000000
         ]);
 
-        \App\Models\Address::factory()->create([
-            'user_id' => 1,
-            'location' => 'Bukit Rivaria Blok B1 No 16 Sawangan Depok'
-        ]);
-
-        \App\Models\Address::factory()->create([
-            'user_id' => 1,
-            'location' => 'Bintara Sawangan Indah B2 no 32'
-        ]);
-
         \App\Models\ProductType::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Makanan',
         ]);
 
         \App\Models\ProductType::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Minuman',
         ]);
 
         \App\Models\ProductType::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Minyak Goreng',
         ]);
 
         \App\Models\ProductType::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Beras',
         ]);
 
         \App\Models\ProductType::factory()->create([
+            'warehouse_id' => 1,
             'name' => 'Alat',
         ]);
 
@@ -93,13 +110,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Order::factory()->create([
+            'warehouse_id' => 1,
             'user_id' => 1,
             'weight_total_kg' => 0.4,
         ]);
 
         // Database seeder for many-to-many relationship
-        $order = \App\Models\Order::first();
-        $order->attachProducts(1, 3);
+        // $order = \App\Models\Order::first();
+        // $order->attachProducts(1, 3);
 
         \App\Models\Total::factory()->create([
             'order_id' => 1,
@@ -110,23 +128,32 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Account::factory()->create([
+            'warehouse_id' => 1,
             'app' => 'Dana',
         ]);
+
         \App\Models\Account::factory()->create([
+            'warehouse_id' => 1,
             'app' => 'BNI',
         ]);
+
         \App\Models\Account::factory()->create([
+            'warehouse_id' => 1,
             'app' => 'Mandiri',
         ]);
+
         \App\Models\Account::factory()->create([
+            'warehouse_id' => 1,
             'app' => 'BCA',
         ]);
 
         \App\Models\Method::factory()->create([
+            'warehouse_id' => 1,
             'type' => 'Virtual Account',
         ]);
 
         \App\Models\Method::factory()->create([
+            'warehouse_id' => 1,
             'type' => 'Transfer',
         ]);
 
@@ -134,14 +161,17 @@ class DatabaseSeeder extends Seeder
         $account->attachMethods(1, 'Antoni Cikarang', '6281387000325');
 
         \App\Models\TransactionType::factory()->create([
+            'warehouse_id' => 1,
             'type' => 'Income',
         ]);
 
         \App\Models\TransactionType::factory()->create([
+            'warehouse_id' => 1,
             'type' => 'Expense',
         ]);
 
         \App\Models\TransactionType::factory()->create([
+            'warehouse_id' => 1,
             'type' => 'Transfer',
         ]);
 

@@ -22,4 +22,9 @@ class Method extends Model
             'account_id'
         );
     }
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 }

@@ -22,4 +22,9 @@ class Product extends Model
             'order_id'
         );
     }
+
+    public function producttype()
+    {
+        return $this->belongsTo(ProductType::class);
+    }
 }

@@ -287,7 +287,7 @@
 																																																<p class="mb-0">Joined since {{ $user->created_at->diffForHumans() }}
 																																																</p>
 																																																<div class="d-flex align-items-center justify-content-center mt-3">
-																																																				<a href="../app/user-profile.html"
+																																																				<a href="{{ route('profile.index') }}"
 																																																								class="btn border mr-2">Profile</a>
 																																																				<a href="auth-sign-in.html" class="btn border">Sign Out</a>
 																																																</div>
