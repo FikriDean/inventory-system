@@ -1,6 +1,6 @@
 <div>
 				{{-- Sidebar Start --}}
-				<div class="iq-sidebar  sidebar-default ">
+				<div class="iq-sidebar sidebar-default ">
 								<div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
 												<a href="../backend/index.html" class="header-logo">
 																<img src="{{ asset('images_dean/InveSys.png') }}" class="img-fluid rounded-normal light-logo"
@@ -11,7 +11,6 @@
 																<i class="las la-bars wrapper-menu"></i>
 												</div>
 								</div>
-
 
 								<div class="data-scrollbar" data-scroll="1">
 												<nav class="iq-sidebar-menu">

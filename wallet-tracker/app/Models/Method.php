@@ -23,6 +23,14 @@ class Method extends Model
         );
     }
 
+    public function attachAccount($account_id, $name, $number)
+    {
+        $this->accounts()->attach($account_id, [
+            'name' => $name,
+            'number' => $number
+        ]);
+    }
+
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);

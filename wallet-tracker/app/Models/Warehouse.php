@@ -13,6 +13,21 @@ class Warehouse extends Model
         'id'
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'users_warehouses',
+            'warehouse_id',
+            'user_id'
+        );
+    }
+
+    public function attachUsers($user_id)
+    {
+        $this->users()->attach($user_id);
+    }
+
     public function accounts()
     {
         return $this->hasMany(Account::class);

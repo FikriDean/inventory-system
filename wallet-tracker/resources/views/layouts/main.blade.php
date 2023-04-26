@@ -22,6 +22,9 @@
 				<!-- remixicon CSS -->
 				<link rel="stylesheet" href="{{ asset('vendor/remixicon/fonts/remixicon.css') }}">
 
+				{{-- custom CSS --}}
+				<link rel="stylesheet" href="{{ asset('css_dean/style.css') }}">
+
 				{{-- <!-- dripicons CSS -->
 				<link rel="stylesheet" href="{{ asset('vendor/@icon/dripicons/dripicons.css') }}"> --}}
 				{{-- 
@@ -46,11 +49,11 @@
 
 <body>
 
-				<!-- loader Start -->
+				{{-- <!-- loader Start -->
 				<div id="loading">
 								<div id="loading-center"></div>
 				</div>
-				<!-- loader END -->
+				<!-- loader END --> --}}
 
 				<!-- Wrapper Start -->
 				<div class="wrapper">
@@ -513,6 +516,9 @@
 
 				<!-- App JavaScript -->
 				<script src="{{ asset('js/app.js') }}"></script>
+
+				{{-- Custom JavaScript --}}
+				@yield('custom_javascript')
 
 				@livewireScripts
 </body>

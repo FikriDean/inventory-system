@@ -24,9 +24,23 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Warehouse::factory(10)->create();
 
-        // \App\Models\Warehouse::factory()->create([
-        //     'code' => 'AWDKJ98AW8D8AWD88'
-        // ]);
+        \App\Models\Role::factory()->create([
+            'warehouse_id' => 1,
+            'name' => 'Direktur Utama',
+            'salary' => 76400000
+        ]);
+
+        \App\Models\Role::factory()->create([
+            'warehouse_id' => 1,
+            'name' => 'Manager',
+            'salary' => 44000000
+        ]);
+
+        \App\Models\Role::factory()->create([
+            'warehouse_id' => 1,
+            'name' => 'Cashier',
+            'salary' => 4000000
+        ]);
 
         \App\Models\User::factory()->create([
             'name' => 'Fikri Dean Radityo',
@@ -50,23 +64,10 @@ class DatabaseSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        \App\Models\Role::factory()->create([
-            'warehouse_id' => 1,
-            'name' => 'Direktur Utama',
-            'salary' => 76400000
-        ]);
-
-        \App\Models\Role::factory()->create([
-            'warehouse_id' => 1,
-            'name' => 'Manager',
-            'salary' => 44000000
-        ]);
-
-        \App\Models\Role::factory()->create([
-            'warehouse_id' => 1,
-            'name' => 'Cashier',
-            'salary' => 4000000
-        ]);
+        $user = \App\Models\User::first();
+        $user->attachWarehouses(1);
+        $user->attachWarehouses(2);
+        $user->attachWarehouses(3);
 
         \App\Models\ProductType::factory()->create([
             'warehouse_id' => 1,

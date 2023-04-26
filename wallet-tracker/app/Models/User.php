@@ -40,6 +40,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function warehouses()
+    {
+        return $this->belongsToMany(
+            Warehouse::class,
+            'users_warehouses',
+            'user_id',
+            'warehouse_id'
+        );
+    }
+
+    public function attachWarehouses($warehouse_id)
+    {
+        $this->warehouses()->attach($warehouse_id);
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);

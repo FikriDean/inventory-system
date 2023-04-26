@@ -23,6 +23,11 @@ class Product extends Model
         );
     }
 
+    public function attachOrders($order_id, $amount)
+    {
+        $this->orders()->attach($order_id, ['amount' => $amount]);
+    }
+
     public function producttype()
     {
         return $this->belongsTo(ProductType::class);

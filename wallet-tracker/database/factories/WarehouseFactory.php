@@ -19,7 +19,8 @@ class WarehouseFactory extends Factory
     {
 
         return [
-            'code' => fake()->regexify('[A-Z0-9]{25}')
+            'code' => fake()->lexify('ware-????-house-????'),
+            'name' => fake()->word()
         ];
     }
 }
