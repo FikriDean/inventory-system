@@ -247,7 +247,7 @@
 																																																<p class="mb-0">Joined since {{ $user->created_at->diffForHumans() }}
 																																																</p>
 																																																<div class="d-flex align-items-center justify-content-center mt-3">
-																																																				<a href="{{ route('profile.index') }}"
+																																																				<a href="{{ route('profile.index', $user->username) }}"
 																																																								class="btn border mr-2">Profile</a>
 																																																				<form method="POST" action="{{ route('logout') }}">
 																																																								@csrf

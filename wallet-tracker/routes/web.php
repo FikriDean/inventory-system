@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WarehouseController;
 
@@ -25,8 +26,9 @@ Route::middleware('auth')->group(function () {
     })->name('home');
 
     Route::any('/warehouse/{code}', [WarehouseController::class, 'index'])->name('warehouse.index');
+    Route::any('/warehouse/{code}/partners', [PartnerController::class, 'index'])->name('partner.index');
 
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::any('/profile/{username}', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

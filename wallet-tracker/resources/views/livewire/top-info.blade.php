@@ -14,9 +14,7 @@
 								<div class="row">
 												@foreach ($warehouses as $key => $warehouse)
 																<div class="col-lg-4 col-md-4">
-																				<form action="{{ route('warehouse.index', $warehouse->code) }}" method="POST"
-																								class="formSubmit c-pointer">
-																								@csrf
+																				<a href="{{ route('warehouse.index', $warehouse->code) }}">
 																								<div class="card card-block card-stretch card-height">
 																												<div class="card-body">
 																																<div class="d-flex align-items-center mb-4 card-total-sale">
@@ -33,13 +31,13 @@
 																																</div>
 																												</div>
 																								</div>
-																				</form>
+																				</a>
 																</div>
 												@endforeach
 								</div>
 				</div>
 </div>
-
+{{-- 
 @section('custom_javascript')
 				<script>
 								$(document).ready(function() {
@@ -48,4 +46,4 @@
 												});
 								});
 				</script>
-@endsection
+@endsection --}}
