@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Warehouse;
+use App\Models\Role;
 
 class PartnerController extends Controller
 {
@@ -39,6 +40,7 @@ class PartnerController extends Controller
         return view('partners.index', [
             'warehouse' => $warehouse,
             'usersInWarehouse' => $usersInWarehouse,
+            'roles' => Role::all(),
         ]);
     }
 }

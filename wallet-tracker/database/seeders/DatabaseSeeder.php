@@ -69,6 +69,9 @@ class DatabaseSeeder extends Seeder
         $user->attachWarehouses(2);
         $user->attachWarehouses(3);
 
+        $warehouse = \App\Models\Warehouse::first();
+        $warehouse->attachUsers(2);
+
         \App\Models\ProductType::factory()->create([
             'warehouse_id' => 1,
             'name' => 'Makanan',
