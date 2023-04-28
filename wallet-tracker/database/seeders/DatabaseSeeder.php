@@ -53,16 +53,18 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1
         ]);
 
-        \App\Models\User::factory()->create([
-            'name' => 'Safira Putri',
-            'username' => 'safiraa',
-            'email' => 'safira@gmail.com',
-            'email_verified_at' => '02/12/2022',
-            'password' => Hash::make('password'),
-            'phone_number' => '62545234234',
-            'gender' => 'Female',
-            'role_id' => 2
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Safira Putri',
+        //     'username' => 'safiraa',
+        //     'email' => 'safira@gmail.com',
+        //     'email_verified_at' => '02/12/2022',
+        //     'password' => Hash::make('password'),
+        //     'phone_number' => '62545234234',
+        //     'gender' => 'Female',
+        //     'role_id' => 2
+        // ]);
+
+        \App\Models\User::factory(10)->create();
 
         $user = \App\Models\User::first();
         $user->attachWarehouses(1);
@@ -71,6 +73,15 @@ class DatabaseSeeder extends Seeder
 
         $warehouse = \App\Models\Warehouse::first();
         $warehouse->attachUsers(2);
+        $warehouse->attachUsers(3);
+        $warehouse->attachUsers(4);
+        $warehouse->attachUsers(5);
+        $warehouse->attachUsers(6);
+        $warehouse->attachUsers(7);
+        $warehouse->attachUsers(8);
+        $warehouse->attachUsers(9);
+        $warehouse->attachUsers(10);
+        $warehouse->attachUsers(11);
 
         \App\Models\ProductType::factory()->create([
             'warehouse_id' => 1,

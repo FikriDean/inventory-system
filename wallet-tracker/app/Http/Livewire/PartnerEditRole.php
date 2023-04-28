@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
+use App\Http\Controllers\Session;
+
 use App\Models\Role;
 use App\Models\User;
 
@@ -27,7 +29,8 @@ class PartnerEditRole extends Component
 
     public function updatedRole()
     {
+        sleep(0.5);
         $this->user->update(['role_id' => $this->role]);
-        session()->flash('role_updated', 'Role berhasil diubah!');
+        // session()->flash('role_updated', 'Role berhasil diubah!');
     }
 }
