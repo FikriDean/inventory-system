@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('product_weight_kg');
             $table->float('price');
             $table->float('stock');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

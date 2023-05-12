@@ -92,14 +92,6 @@
 				</div>
 				<!-- Wrapper End-->
 
-				{{-- <!-- Main Javascript -->
-												<script type="text/javascript" src="{{ asset('vendor/jquery-3.3.1.min.js') }}"></script>
-												<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-												<script type="text/javascript" src="{{ asset('vendor/prism/prism.js') }}"></script>
-												<script type="text/javascript" src="{{ asset('vendor/jquery-scrollTo/jquery.scrollTo.min.js') }}"></script>
-												<script type="text/javascript" src="{{ asset('vendor/stickyfill/dist/stickyfill.min.js') }}"></script>
-												<script type="text/javascript" src="{{ asset('js/main.js') }}"></script> --}}
-
 				<!-- Backend-bundle JS -->
 				<script src="{{ asset('js/backend-bundle.min.js') }}"></script>
 

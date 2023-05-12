@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Product;
 use App\Models\Warehouse;
 
-class WarehouseController extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request, string $code)
     {
@@ -48,20 +49,12 @@ class WarehouseController extends Controller
             return redirect(route('home'));
         }
 
-        $usersCount = $warehouse->users->count();
-
-        $productsCount = 0;
-
-        foreach ($warehouse->producttypes as $producttype) {
-            $productCount = $producttype->products->count();
-            $productsCount += $productCount;
-        }
+        $producttypes = $warehouse->producttypes;
 
         // return view terkait
-        return view('warehouse.index', [
+        return view('product.index', [
             'warehouse' => $warehouse,
-            'usersCount' => $usersCount,
-            'productsCount' => $productsCount
+            'producttypes' => $producttypes,
         ]);
     }
 }

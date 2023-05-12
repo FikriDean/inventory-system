@@ -18,7 +18,7 @@
 																</div>
 
 																<div class="col-lg-12">
-																				@livewire('partner-table', ['usersInWarehouse' => $usersInWarehouse, 'warehouse' => $warehouse])
+																				@livewire('partner-table', ['users' => $users, 'warehouse' => $warehouse])
 																</div>
 												</div>
 												<!-- Page end  -->

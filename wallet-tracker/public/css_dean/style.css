@@ -1,4 +1,32 @@
 .c-pointer {
   cursor: pointer;
 }
+
+.opacity-0 {
+  opacity: 0%;
+}
+
+.opacity-100 {
+  opacity: 100%;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-show {
+  display: inline-block;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 /*# sourceMappingURL=style.css.map */

@@ -10,12 +10,12 @@ class PartnerTable extends Component
 {
     protected $listeners = ['partnerDeleted'];
 
-    public $usersInWarehouse;
+    public $users;
     public $warehouse;
 
-    public function mount($usersInWarehouse, $warehouse)
+    public function mount($users, $warehouse)
     {
-        $this->usersInWarehouse = $usersInWarehouse;
+        $this->users = $users;
         $this->warehouse = $warehouse;
     }
 
@@ -26,7 +26,7 @@ class PartnerTable extends Component
 
     public function partnerDeleted()
     {
-        $this->usersInWarehouse = Warehouse::where('id', $this->warehouse->id)->first()->users;
+        $this->users = Warehouse::where('id', $this->warehouse->id)->first()->users;
         session()->flash('partner_deleted', 'Partner berhasil dihapus');
     }
 }

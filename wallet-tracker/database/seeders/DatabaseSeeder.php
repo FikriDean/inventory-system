@@ -124,6 +124,22 @@ class DatabaseSeeder extends Seeder
             'stock' => 1023
         ]);
 
+        \App\Models\Product::factory()->create([
+            'product_type_id' => 2,
+            'name' => 'Pop Ice',
+            'product_weight_kg' => 0.05,
+            'price' => 350,
+            'stock' => 1323
+        ]);
+
+        \App\Models\Product::factory()->create([
+            'product_type_id' => 2,
+            'name' => 'Nutri Sari',
+            'product_weight_kg' => 0.05,
+            'price' => 500,
+            'stock' => 5535
+        ]);
+
         \App\Models\Order::factory()->create([
             'warehouse_id' => 1,
             'user_id' => 1,

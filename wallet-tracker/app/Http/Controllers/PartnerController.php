@@ -39,7 +39,7 @@ class PartnerController extends Controller
         // return view terkait
         return view('partners.index', [
             'warehouse' => $warehouse,
-            'usersInWarehouse' => $usersInWarehouse,
+            'users' => $usersInWarehouse,
             'roles' => Role::all(),
         ]);
     }

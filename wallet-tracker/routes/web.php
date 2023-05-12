@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WarehouseController;
 
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
 
     Route::any('/warehouse/{code}', [WarehouseController::class, 'index'])->name('warehouse.index');
     Route::any('/warehouse/{code}/partners', [PartnerController::class, 'index'])->name('partner.index');
+    Route::any('/warehouse/{code}/products', [ProductController::class, 'index'])->name('product.index');
 
     Route::any('/profile/{username}', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
