@@ -27,19 +27,22 @@ class DatabaseSeeder extends Seeder
         \App\Models\Role::factory()->create([
             'warehouse_id' => 1,
             'name' => 'Direktur Utama',
-            'salary' => 76400000
+            'salary' => 76000,
+            'level' => 700
         ]);
 
         \App\Models\Role::factory()->create([
             'warehouse_id' => 1,
             'name' => 'Manager',
-            'salary' => 44000000
+            'salary' => 44000,
+            'level' => 500,
         ]);
 
         \App\Models\Role::factory()->create([
             'warehouse_id' => 1,
             'name' => 'Cashier',
-            'salary' => 4000000
+            'salary' => 4000,
+            'level' => 400,
         ]);
 
         \App\Models\User::factory()->create([
@@ -50,7 +53,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'phone_number' => '6281387000325',
             'gender' => 'Male',
-            'role_id' => 1
         ]);
 
         // \App\Models\User::factory()->create([
@@ -71,17 +73,7 @@ class DatabaseSeeder extends Seeder
         $user->attachWarehouses(2);
         $user->attachWarehouses(3);
 
-        $warehouse = \App\Models\Warehouse::first();
-        $warehouse->attachUsers(2);
-        $warehouse->attachUsers(3);
-        $warehouse->attachUsers(4);
-        $warehouse->attachUsers(5);
-        $warehouse->attachUsers(6);
-        $warehouse->attachUsers(7);
-        $warehouse->attachUsers(8);
-        $warehouse->attachUsers(9);
-        $warehouse->attachUsers(10);
-        $warehouse->attachUsers(11);
+        $user->attachRoles(1);
 
         \App\Models\ProductType::factory()->create([
             'warehouse_id' => 1,
@@ -111,6 +103,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Product::factory()->create([
             'product_type_id' => 1,
             'name' => 'Indomie Goreng',
+            'slug' => 'indomie_goreng',
             'product_weight_kg' => 0.1,
             'price' => 2300,
             'stock' => 1323
@@ -119,6 +112,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Product::factory()->create([
             'product_type_id' => 1,
             'name' => 'Indomie Rebus',
+            'slug' => 'indomie_rebus',
             'product_weight_kg' => 0.1,
             'price' => 2400,
             'stock' => 1023
@@ -127,6 +121,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Product::factory()->create([
             'product_type_id' => 2,
             'name' => 'Pop Ice',
+            'slug' => 'pop_ice',
             'product_weight_kg' => 0.05,
             'price' => 350,
             'stock' => 1323
@@ -135,47 +130,51 @@ class DatabaseSeeder extends Seeder
         \App\Models\Product::factory()->create([
             'product_type_id' => 2,
             'name' => 'Nutri Sari',
+            'slug' => 'nutri_sari',
             'product_weight_kg' => 0.05,
             'price' => 500,
             'stock' => 5535
         ]);
 
-        \App\Models\Order::factory()->create([
-            'warehouse_id' => 1,
-            'user_id' => 1,
-            'weight_total_kg' => 0.4,
-        ]);
+        \App\Models\Product::factory(10)->create();
 
         // Database seeder for many-to-many relationship
         // $order = \App\Models\Order::first();
         // $order->attachProducts(1, 3);
 
-        \App\Models\Total::factory()->create([
-            'order_id' => 1,
+        \App\Models\Order::factory()->create([
+            'warehouse_id' => 1,
+            'book' => fake()->lexify('ware-????-house-????'),
             'product_total' => 14500,
             'promo' => 1000,
             'tax' => 145,
-            'final_total' => 15645
+            'final_total' => 15645,
+            'weight_total_kg' => 2.2,
+            'confirmation' => true,
         ]);
 
         \App\Models\Account::factory()->create([
             'warehouse_id' => 1,
             'app' => 'Dana',
+            'number' => '081387000325',
         ]);
 
         \App\Models\Account::factory()->create([
             'warehouse_id' => 1,
             'app' => 'BNI',
+            'number' => '28281929829',
         ]);
 
         \App\Models\Account::factory()->create([
             'warehouse_id' => 1,
             'app' => 'Mandiri',
+            'number' => '31313131313',
         ]);
 
         \App\Models\Account::factory()->create([
             'warehouse_id' => 1,
             'app' => 'BCA',
+            'number' => '313131313131',
         ]);
 
         \App\Models\Method::factory()->create([
@@ -189,7 +188,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $account = \App\Models\Account::first();
-        $account->attachMethods(1, 'Antoni Cikarang', '6281387000325');
+        $account->attachMethods(1, fake()->lexify('account-????-method-????'), 'Antoni Cikarang', '6281387000325');
 
         \App\Models\TransactionType::factory()->create([
             'warehouse_id' => 1,
@@ -206,19 +205,25 @@ class DatabaseSeeder extends Seeder
             'type' => 'Transfer',
         ]);
 
+        \App\Models\TransactionStatus::factory()->create([
+            'name' => 'Pending',
+        ]);
+
+        \App\Models\TransactionStatus::factory()->create([
+            'name' => 'Canceled',
+        ]);
+
+        \App\Models\TransactionStatus::factory()->create([
+            'name' => 'Done',
+        ]);
+
         \App\Models\Transaction::factory()->create([
             'transaction_type_id' => 1,
             'account_method_id' => 1,
             'transaction_name' => 'Safira Putri',
             'transaction_number' => '62728288181',
-            'total_id' => 1,
-            'status' => 1
-        ]);
-
-        \App\Models\Invitation::factory()->create([
-            'warehouse_id' => 1,
-            'email' => 'safira@gmail.com',
-            'status' => 'accepted'
+            'order_id' => 1,
+            'status_id' => 1,
         ]);
     }
 }

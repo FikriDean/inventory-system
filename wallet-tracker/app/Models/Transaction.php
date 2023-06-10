@@ -18,8 +18,17 @@ class Transaction extends Model
         return $this->belongsTo(TransactionType::class, 'id');
     }
 
-    public function total()
+    public function transactionstatus()
     {
-        return $this->belongsTo(Total::class);
+        return $this->belongsTo(TransactionStatus::class, 'id');
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(order::class);
+    }
+
+    public function account_method() {
+        return $this->belongsTo(AccountMethod::class);
     }
 }

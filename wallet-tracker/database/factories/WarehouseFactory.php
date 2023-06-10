@@ -20,7 +20,8 @@ class WarehouseFactory extends Factory
 
         return [
             'code' => fake()->lexify('ware-????-house-????'),
-            'name' => fake()->word()
+            'name' => fake()->word(),
+            'level' => rand(100, 400),
         ];
     }
 }

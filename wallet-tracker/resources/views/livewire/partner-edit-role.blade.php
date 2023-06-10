@@ -1,16 +1,11 @@
 <div>
-				<div class="mt-4">
-								<div wire:loading wire:target="role">
-												Changing role...
-								</div>
-
-								<div class="input-group mb-4">
-												<select class="custom-select" wire:model='role'>
-																@foreach ($roles as $role)
-																				<option value="{{ $role->id }}" @if ($role->id == $user->role->id) selected @endif>
-																								{{ $role->name }}</option>
-																@endforeach
-												</select>
-								</div>
-				</div>
+    <div class="input-group">
+        <select class="custom-select" wire:model='newRole' wire:change='updateRole({{ $user->id }})'>
+            @foreach ($roles as $roleSelect)
+                <option value="{{ $roleSelect->id }}" @if ($roleSelect->id == $role->id) selected @endif>
+                    {{ $roleSelect->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
 </div>

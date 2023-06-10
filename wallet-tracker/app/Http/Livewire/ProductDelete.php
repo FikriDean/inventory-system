@@ -21,6 +21,6 @@ class ProductDelete extends Component
     public function deleteProduct()
     {
         $this->product->delete();
-        $this->emitTo('product-table', 'productDeleted');
+        $this->emitTo('product-table-edit', 'productDeleted');
     }
 }

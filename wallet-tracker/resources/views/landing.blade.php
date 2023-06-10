@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content-page')
-				@livewire('top-info')
+    @livewire('top-info')
 @endsection

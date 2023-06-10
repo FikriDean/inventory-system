@@ -16,19 +16,23 @@ return new class extends Migration
             $table->foreignId('transaction_type_id');
             $table->foreign('transaction_type_id')
                 ->references('id')
-                ->on('transaction_types')->onDelete('cascade');
+                ->on('transaction_types')->constrained()->onDelete('cascade');
             $table->foreignId('account_method_id');
             $table->foreign('account_method_id')
                 ->references('id')
-                ->on('accounts_methods')->onDelete('cascade');
+                ->on('accounts_methods')->constrained()->onDelete('cascade');
             $table->string('transaction_name');
             $table->string('transaction_number');
-            $table->foreignId('total_id');
-            $table->foreign('total_id')
+            $table->foreignId('order_id');
+            $table->foreign('order_id')
                 ->references('id')
-                ->on('totals')->onDelete('cascade');
-            $table->string('image')->default('default.png');
-            $table->tinyInteger('status');
+                ->on('orders')->constrained()->onDelete('cascade');
+            $table->foreignId('status_id');
+            $table->foreign('status_id')
+                ->references('id')
+                ->on('transaction_statuses')->constrained()->onDelete('cascade');
+            $table->string('image')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

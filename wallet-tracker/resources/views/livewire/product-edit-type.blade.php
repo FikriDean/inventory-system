@@ -1,9 +1,5 @@
 <div>
 				<div class="mt-4">
-								<div wire:loading wire:target="producttype">
-												Changing Product Type...
-								</div>
-
 								<div class="input-group mb-4">
 												<select class="custom-select" wire:model='producttype' wire:change='updateProducttype'>
 																@foreach ($productTypes as $productType)

@@ -8,25 +8,16 @@ use App\Models\Warehouse;
 
 class PartnerTable extends Component
 {
-    protected $listeners = ['partnerDeleted'];
+    public $warehouse, $roles;
 
-    public $users;
-    public $warehouse;
-
-    public function mount($users, $warehouse)
+    public function mount($warehouse)
     {
-        $this->users = $users;
         $this->warehouse = $warehouse;
+        $this->roles = $warehouse->roles;
     }
 
     public function render()
     {
         return view('livewire.partner-table');
-    }
-
-    public function partnerDeleted()
-    {
-        $this->users = Warehouse::where('id', $this->warehouse->id)->first()->users;
-        session()->flash('partner_deleted', 'Partner berhasil dihapus');
     }
 }

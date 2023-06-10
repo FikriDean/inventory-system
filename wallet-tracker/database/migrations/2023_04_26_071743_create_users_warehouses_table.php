@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')->onDelete('cascade');
+                ->on('users')->constrained()->onDelete('cascade');
             $table->foreignId('warehouse_id');
             $table->foreign('warehouse_id')
                 ->references('id')
-                ->on('warehouses')->onDelete('cascade');
+                ->on('warehouses')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

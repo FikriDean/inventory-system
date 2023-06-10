@@ -26,7 +26,6 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'phone_number' => fake()->phoneNumber(),
             'gender' => 'Man',
-            'role_id' => rand(1, 3),
             'remember_token' => Str::random(10),
         ];
     }

@@ -20,14 +20,15 @@ class Method extends Model
             'accounts_methods',
             'method_id',
             'account_id'
-        );
+        )->withPivot('am_code', 'name', 'number');
     }
 
-    public function attachAccount($account_id, $name, $number)
+    public function attachAccount($account_id, $am_code, $name, $number)
     {
         $this->accounts()->attach($account_id, [
+            'am_code' => $am_code,
             'name' => $name,
-            'number' => $number
+            'number' => $number,
         ]);
     }
 

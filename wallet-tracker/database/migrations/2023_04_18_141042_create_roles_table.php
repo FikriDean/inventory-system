@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('warehouse_id');
+            $table->foreignId('warehouse_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->bigInteger('salary');
+            $table->float('salary');
+            $table->integer('level');
             $table->timestamps();
         });
     }

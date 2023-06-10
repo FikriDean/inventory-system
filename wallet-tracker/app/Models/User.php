@@ -55,13 +55,28 @@ class User extends Authenticatable
         $this->warehouses()->attach($warehouse_id);
     }
 
-    public function role()
+    public function roles()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(
+            Role::class,
+            'roles_users',
+            'user_id',
+            'role_id'
+        );
+    }
+
+    public function attachRoles($role_id)
+    {
+        $this->roles()->attach($role_id);
     }
 
     public function addresses()
     {
         return $this->hasMany(Address::class);
+    }
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
     }
 }

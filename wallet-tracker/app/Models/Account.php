@@ -23,11 +23,12 @@ class Account extends Model
         );
     }
 
-    public function attachMethods($method_id, $name, $number)
+    public function attachMethods($method_id, $am_code, $name, $number)
     {
         $this->methods()->attach($method_id, [
+            'am_code' => $am_code,
             'name' => $name,
-            'number' => $number
+            'number' => $number,
         ]);
     }
 

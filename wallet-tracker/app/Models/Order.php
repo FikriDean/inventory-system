@@ -20,7 +20,7 @@ class Order extends Model
             'orders_products',
             'order_id',
             'product_id'
-        );
+        )->withPivot('amount');
     }
 
     public function attachProducts($product_id, $amount)
@@ -28,9 +28,9 @@ class Order extends Model
         $this->products()->attach($product_id, ['amount' => $amount]);
     }
 
-    public function total()
+    public function transaction()
     {
-        return $this->hasOne(Total::class);
+        return $this->hasOne(Transaction::class);
     }
 
     public function warehouse()

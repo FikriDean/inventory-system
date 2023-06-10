@@ -16,11 +16,12 @@ return new class extends Migration
             $table->foreignId('product_type_id');
             $table->foreign('product_type_id')
                 ->references('id')
-                ->on('product_types')->onDelete('cascade');
+                ->on('product_types')->constrained()->onDelete('cascade');
             $table->string('name');
+            $table->string('slug')->nullable();
             $table->float('product_weight_kg');
             $table->float('price');
-            $table->float('stock');
+            $table->integer('stock');
             $table->string('image')->nullable();
             $table->timestamps();
         });

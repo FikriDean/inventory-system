@@ -13,8 +13,13 @@ class Invitation extends Model
         'id'
     ];
 
-    public function warehouse()
+    public function user()
     {
-        return $this->belongsTo(Warehouse::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

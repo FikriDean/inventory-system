@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('warehouse_id');
-            $table->string('email');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('from');
+            $table->integer('role_id');
             $table->string('status');
             $table->timestamps();
         });

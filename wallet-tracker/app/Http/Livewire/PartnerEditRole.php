@@ -4,22 +4,19 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-use App\Http\Controllers\Session;
+use App\Models\User;
 
 use App\Models\Role;
-use App\Models\User;
 
 class PartnerEditRole extends Component
 {
-    public $user;
-    public $roles;
-    public $role;
+    public $warehouse, $roles, $role, $newRole, $user;
 
-    public function mount($user)
-    {
+    public function mount($warehouse, $role, $user) {
+        $this->warehouse = $warehouse;
+        $this->roles = $warehouse->roles;
+        $this->role = $role;
         $this->user = $user;
-        $this->roles = Role::all();
-        $this->role = $this->user->role->id;
     }
 
     public function render()
@@ -27,10 +24,15 @@ class PartnerEditRole extends Component
         return view('livewire.partner-edit-role');
     }
 
-    public function updatedRole()
-    {
-        sleep(0.5);
-        $this->user->update(['role_id' => $this->role]);
-        // session()->flash('role_updated', 'Role berhasil diubah!');
+    public function updateRole($user_id) {
+        $userUpdate = User::where('id', $user_id)->first();
+
+        if (!$userUpdate) {
+            return;
+        }
+
+        $userUpdate->roles()->detach();
+
+        $userUpdate->attachRoles($this->newRole);
     }
 }

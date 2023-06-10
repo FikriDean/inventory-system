@@ -16,12 +16,13 @@ return new class extends Migration
             $table->foreignId('order_id');
             $table->foreign('order_id')
                 ->references('id')
-                ->on('orders')->onDelete('cascade');
+                ->on('orders')->constrained()->onDelete('cascade');
             $table->foreignId('product_id');
             $table->foreign('product_id')
                 ->references('id')
-                ->on('products')->onDelete('cascade');
+                ->on('products')->constrained()->onDelete('cascade');
             $table->bigInteger('amount');
+            $table->timestamps();
         });
     }
 

@@ -16,11 +16,12 @@ return new class extends Migration
             $table->foreignId('account_id');
             $table->foreign('account_id')
                 ->references('id')
-                ->on('accounts')->onDelete('cascade');
+                ->on('accounts')->constrained()->onDelete('cascade');
             $table->foreignId('method_id');
             $table->foreign('method_id')
                 ->references('id')
-                ->on('methods')->onDelete('cascade');
+                ->on('methods')->constrained()->onDelete('cascade');
+            $table->string('am_code');
             $table->string('name');
             $table->string('number');
             $table->timestamps();

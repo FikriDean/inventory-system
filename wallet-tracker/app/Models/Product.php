@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -20,7 +21,7 @@ class Product extends Model
             'orders_products',
             'product_id',
             'order_id'
-        );
+        )->withPivot('amount');
     }
 
     public function attachOrders($order_id, $amount)
@@ -28,7 +29,7 @@ class Product extends Model
         $this->orders()->attach($order_id, ['amount' => $amount]);
     }
 
-    public function producttype()
+    public function producttype(): BelongsTo
     {
         return $this->belongsTo(ProductType::class);
     }

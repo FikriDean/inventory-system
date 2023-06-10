@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('about')->nullable();
             $table->string('interest')->nullable();
-            $table->foreignId('role_id')->default(3);
             $table->string('image')->default('user/photo_profiles/default_user_logo.png');
             $table->rememberToken();
             $table->timestamps();

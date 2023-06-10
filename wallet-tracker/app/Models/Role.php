@@ -15,11 +15,26 @@ class Role extends Model
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(
+            User::class,
+            'roles_users',
+            'role_id',
+            'user_id'
+        );
+    }
+
+    public function attachUsers($user_id)
+    {
+        $this->users()->attach($user_id);
     }
 
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);
+    }
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
     }
 }

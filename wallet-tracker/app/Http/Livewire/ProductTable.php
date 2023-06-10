@@ -8,14 +8,14 @@ use App\Models\ProductType;
 
 class ProductTable extends Component
 {
-    protected $listeners = ['productDeleted', 'productAdded'];
+    protected $listeners = ['productDeleted', 'productAdded', 'productChanged'];
 
     public $producttypes;
     public $warehouse;
 
     public function mount($producttypes, $warehouse)
     {
-        $this->producttypes = $producttypes;
+        $this->producttypes = ProductType::all();
         $this->warehouse = $warehouse;
     }
 
@@ -24,13 +24,10 @@ class ProductTable extends Component
         return view('livewire.product-table');
     }
 
-    public function productDeleted()
-    {
-        $this->producttypes = ProductType::all();
-    }
-
     public function productAdded()
     {
         $this->producttypes = ProductType::all();
+        return redirect(route('product.index', $this->warehouse->code));
+        // $this->dispatchBrowserEvent('update-items');
     }
 }
